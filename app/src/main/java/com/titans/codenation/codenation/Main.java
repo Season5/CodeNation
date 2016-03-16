@@ -35,8 +35,18 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
 
         if(id == R.id.nav_camera){
             //handle camera output...navigation
+            MainFragment fragment = new MainFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_contaier, fragment);
+            fragmentTransaction.commit();
         }else if(id == R.id.nav_gallery){
             //handle gallery input
+            GalleryFragment fragment = new GalleryFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_contaier, fragment);
+            fragmentTransaction.commit();
         }else if(id == R.id.nav_slideshow){
             //handle output
         }else if(id == R.id.nav_manage){
