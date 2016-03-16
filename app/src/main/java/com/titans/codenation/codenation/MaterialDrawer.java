@@ -16,12 +16,26 @@ import android.view.MenuItem;
 public class MaterialDrawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    NavigationView navigationView = null;
+    android.widget.Toolbar toolbar = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_material_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //setting the fragment initially
+        MainFragment fragment = new MainFragment();
+        android.support.v4.app.FragmentTransaction fragmentTransaction =
+                getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_contaier, fragment);
+        fragmentTransaction.commit();
+
+
+
+
+        //floating action button code
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +54,12 @@ public class MaterialDrawer extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
+
+
+
+
 
     @Override
     public void onBackPressed() {
@@ -82,7 +101,18 @@ public class MaterialDrawer extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            MainFragment fragment = new MainFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_contaier, fragment);
+            fragmentTransaction.commit();
         } else if (id == R.id.nav_gallery) {
+            //handle gallery input
+            GalleryFragment fragment = new GalleryFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_contaier, fragment);
+            fragmentTransaction.commit();
 
         } else if (id == R.id.nav_slideshow) {
 
